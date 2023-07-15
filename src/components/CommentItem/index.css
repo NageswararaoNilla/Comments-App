@@ -27,3 +27,107 @@
 }
 
 /* Write your CSS here */
+
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.initial-comment-container {
+  display: flex;
+}
+
+.initial-container {
+  width: 10%;
+  margin-right: 15px;
+}
+
+.initial {
+  color: #ffffff;
+  border-radius: 25px;
+  width: 50px;
+  height: 50px;
+  font-family: 'Roboto';
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 18px;
+  padding-top: 10px;
+}
+
+.name-time {
+  display: flex;
+  align-items: center;
+  margin-top: 0px;
+}
+
+.name {
+  color: #334155;
+  font-family: 'Roboto';
+  font-size: 28px;
+  font-weight: 500;
+  margin-right: 20px;
+}
+
+.time {
+  color: #94a3b8;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 18px;
+}
+
+.comment-text {
+  color: #64748b;
+  font-family: 'Roboto';
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.like-btn-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.like-img-container {
+  display: flex;
+  align-items: center;
+}
+
+.like-img {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  margin-left: 15px;
+}
+
+.like-btn {
+  color: #7e858e;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  margin-top: 5px;
+}
+
+.blue-text {
+  color: #0b69ff;
+}
+
+.delete-btn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  margin-top: 10px;
+}
+
+.delete-icon {
+  width: 20px;
+  height: 20px;
+}
