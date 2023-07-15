@@ -1,7 +1,7 @@
 import './index.css'
 
 const CommentItem = props => {
-  const {commentDetails, bgColors, toggleIsLiked} = props
+  const {commentDetails, bgColors, toggleIsLiked, onDelete} = props
   const {id, name, comment, timeUpdate, isLiked} = commentDetails
   //   console.log(timeUpdate)
   const initial = name[0]
@@ -22,13 +22,17 @@ const CommentItem = props => {
     toggleIsLiked(id)
   }
 
+  const onClickDeleteIcon = () => {
+    onDelete(id)
+  }
+
   return (
     <li className="comment-container">
       <div className="initial-comment-container">
         <div className="initial-container">
           <p className={`initial ${getBgColor()}`}>{initial}</p>
         </div>
-        <div>
+        <div className="name-time-container">
           <div className="name-time">
             <h1 className="name">{name}</h1>
             <p className="time">{timeUpdate}</p>
@@ -47,7 +51,12 @@ const CommentItem = props => {
             Like
           </button>
         </div>
-        <button type="button" className="delete-btn" data-testid="delete">
+        <button
+          type="button"
+          className="delete-btn"
+          data-testid="delete"
+          onClick={onClickDeleteIcon}
+        >
           <img
             src="https://assets.ccbp.in/frontend/react-js/comments-app/delete-img.png "
             alt="delete"

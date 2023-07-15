@@ -36,6 +36,14 @@ const commentImg =
 class Comments extends Component {
   state = {commentsList: initialComments, name: '', comment: ''}
 
+  onDelete = id => {
+    const {commentsList} = this.state
+    const updateResults = commentsList.filter(each => id !== each.id)
+    this.setState({
+      commentsList: updateResults,
+    })
+  }
+
   toggleIsLiked = id => {
     this.setState(prevState => ({
       commentsList: prevState.commentsList.map(each => {
@@ -78,7 +86,7 @@ class Comments extends Component {
   }
 
   render() {
-    const {commentsList} = this.state
+    const {commentsList, name, comment} = this.state
     const len = commentsList.length
     // const bgColor = this.getBgColor()
     // console.log(commentsList, bgColor)
@@ -100,6 +108,7 @@ class Comments extends Component {
                   placeholder="Your Name"
                   className="user-name"
                   onChange={this.onName}
+                  value={name}
                 />
                 <textarea
                   rows="5"
@@ -107,6 +116,7 @@ class Comments extends Component {
                   placeholder="Your Comment"
                   className="input-comment"
                   onChange={this.onComment}
+                  value={comment}
                 />
                 <button type="submit" className="btn">
                   Add Comment
@@ -127,6 +137,7 @@ class Comments extends Component {
                 key={eachComment.id}
                 bgColors={initialContainerBackgroundClassNames}
                 toggleIsLiked={this.toggleIsLiked}
+                onDelete={this.onDelete}
               />
             ))}
           </ul>
