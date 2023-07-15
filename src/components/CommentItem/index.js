@@ -1,22 +1,33 @@
+import {formatDistanceToNow} from 'date-fns'
+
 import './index.css'
 
 const CommentItem = props => {
-  const {commentDetails, bgColors, toggleIsLiked, onDelete} = props
-  const {id, name, comment, timeUpdate, isLiked} = commentDetails
+  const {commentDetails, toggleIsLiked, onDelete} = props
+  const {
+    id,
+    name,
+    comment,
+    timeUpdate,
+    isLiked,
+    initialClassName,
+  } = commentDetails
   //   console.log(timeUpdate)
-  const initial = name[0]
+  const initial = name ? name[0].toUpperCase() : ''
 
-  const getBgColor = () => {
-    const index = Math.floor(Math.random() * bgColors.length)
-    const bgColor = bgColors[index]
-    return bgColor
-  }
+  //   const getBgColor = () => {
+  //     const index = Math.floor(Math.random() * bgColors.length)
+  //     const bgColor = bgColors[index]
+  //     return bgColor
+  //   }
 
   const likeImg = isLiked
     ? 'https://assets.ccbp.in/frontend/react-js/comments-app/liked-img.png'
     : 'https://assets.ccbp.in/frontend/react-js/comments-app/like-img.png'
 
   const likeColor = isLiked ? 'blue-text' : ''
+
+  const postedTime = formatDistanceToNow(timeUpdate)
 
   const onClickLike = () => {
     toggleIsLiked(id)
@@ -29,19 +40,19 @@ const CommentItem = props => {
   return (
     <li className="comment-container">
       <div className="initial-comment-container">
-        <div className="initial-container">
-          <p className={`initial ${getBgColor()}`}>{initial}</p>
+        <div className={`initial-container  ${initialClassName}`}>
+          <p className="initial">{initial}</p>
         </div>
         <div className="name-time-container">
           <div className="name-time">
-            <h1 className="name">{name}</h1>
-            <p className="time">{timeUpdate}</p>
+            <p className="name">{name}</p>
+            <p className="time">{postedTime}</p>
           </div>
           <p className="comment-text">{comment}</p>
         </div>
       </div>
-      <div className="like-btn-container">
-        <div className="like-img-container">
+      <div className="buttons-container">
+        <div className="like-container">
           <img src={likeImg} alt="like" className="like-img" />
           <button
             type="button"
@@ -64,6 +75,7 @@ const CommentItem = props => {
           />
         </button>
       </div>
+      <hr className="comment-line" />
     </li>
   )
 }

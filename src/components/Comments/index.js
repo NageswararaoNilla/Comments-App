@@ -2,8 +2,6 @@ import {Component} from 'react'
 
 import {v4 as uuidv4} from 'uuid'
 
-import {formatDistanceToNow} from 'date-fns'
-
 import CommentItem from '../CommentItem'
 
 import './index.css'
@@ -18,23 +16,23 @@ const initialContainerBackgroundClassNames = [
   'light-blue',
 ]
 
-const initialComments = [
-  {
-    id: uuidv4(),
-    name: 'Richard Branson',
-    comment:
-      'Thanks for being so typically supportive and such a good friend,Elon.Great to be opening up space for all.',
-    timeUpdate: formatDistanceToNow(new Date()),
-    isLiked: false,
-  },
-]
+// const initialComments = [
+//   {
+//     id: uuidv4(),
+//     name: 'Richard Branson',
+//     comment:
+//       'Thanks for being so typically supportive and such a good friend,Elon.Great to be opening up space for all.',
+//     timeUpdate: formatDistanceToNow(new Date()),
+//     isLiked: false,
+//   },
+// ]
 
 // Write your code here
 const commentImg =
   'https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png'
 
 class Comments extends Component {
-  state = {commentsList: initialComments, name: '', comment: ''}
+  state = {commentsList: [], name: '', comment: ''}
 
   onDelete = id => {
     const {commentsList} = this.state
@@ -56,15 +54,22 @@ class Comments extends Component {
   }
 
   onSubmitComment = event => {
-    const {name, comment} = this.state
     event.preventDefault()
-    const timeUpdate = formatDistanceToNow(new Date())
+    const {name, comment} = this.state
+    // const timeUpdate = formatDistanceToNow(new Date())
+    const col =
+      initialContainerBackgroundClassNames[
+        Math.ceil(
+          Math.random() * initialContainerBackgroundClassNames.length - 1,
+        )
+      ]
     const newComment = {
       id: uuidv4(),
       name,
       comment,
-      timeUpdate,
+      timeUpdate: new Date(),
       isLiked: false,
+      initialClassName: col,
     }
     this.setState(prevState => ({
       commentsList: [...prevState.commentsList, newComment],
@@ -94,40 +99,35 @@ class Comments extends Component {
       <div className="app-container">
         <div className="comments-banner-container">
           <h1 className="heading">Comments</h1>
-          <div className="input-img-container">
-            <div className="img-container">
-              <img src={commentImg} alt="comments" className="comments-img" />
-            </div>
-            <div className="input-container">
-              <p className="description">
+          <div className="comments-inputs">
+            {/* <div className="img-container"> </div> */}
+            {/* <div className="input-container"> </div> */}
+            <form className="form-container" onSubmit={this.onSubmitComment}>
+              <p className="form-description">
                 Say something about 4.0 Technologies
               </p>
-              <form className="form-container" onSubmit={this.onSubmitComment}>
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="user-name"
-                  onChange={this.onName}
-                  value={name}
-                />
-                <textarea
-                  rows="5"
-                  cols="50"
-                  placeholder="Your Comment"
-                  className="input-comment"
-                  onChange={this.onComment}
-                  value={comment}
-                />
-                <button type="submit" className="btn">
-                  Add Comment
-                </button>
-              </form>
-            </div>
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="user-name"
+                onChange={this.onName}
+                value={name}
+              />
+              <textarea
+                rows="6"
+                placeholder="Your Comment"
+                className="input-comment"
+                onChange={this.onComment}
+                value={comment}
+              />
+              <button type="submit" className="btn">
+                Add Comment
+              </button>
+            </form>
+            <img src={commentImg} alt="comments" className="comments-img" />
           </div>
-        </div>
-        <hr className="hr-line" />
-        <div className="comments-list-container">
-          <p className="count-comments">
+          <hr className="hr-line" />
+          <p className="count-heading">
             <span className="count">{len}</span>Comments
           </p>
           <ul className="comments-list">
@@ -142,6 +142,7 @@ class Comments extends Component {
             ))}
           </ul>
         </div>
+        {/* <div className="comments-list-container"></div> */}
       </div>
     )
   }
