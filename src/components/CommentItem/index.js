@@ -1,8 +1,8 @@
 import './index.css'
 
 const CommentItem = props => {
-  const {commentDetails, bgColors} = props
-  const {name, comment, timeUpdate, isLiked} = commentDetails
+  const {commentDetails, bgColors, toggleIsLiked} = props
+  const {id, name, comment, timeUpdate, isLiked} = commentDetails
   //   console.log(timeUpdate)
   const initial = name[0]
 
@@ -17,6 +17,10 @@ const CommentItem = props => {
     : 'https://assets.ccbp.in/frontend/react-js/comments-app/like-img.png'
 
   const likeColor = isLiked ? 'blue-text' : ''
+
+  const onClickLike = () => {
+    toggleIsLiked(id)
+  }
 
   return (
     <li className="comment-container">
@@ -35,7 +39,11 @@ const CommentItem = props => {
       <div className="like-btn-container">
         <div className="like-img-container">
           <img src={likeImg} alt="like" className="like-img" />
-          <button type="button" className={`like-btn ${likeColor}`}>
+          <button
+            type="button"
+            className={`like-btn ${likeColor}`}
+            onClick={onClickLike}
+          >
             Like
           </button>
         </div>

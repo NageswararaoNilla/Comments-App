@@ -36,6 +36,17 @@ const commentImg =
 class Comments extends Component {
   state = {commentsList: initialComments, name: '', comment: ''}
 
+  toggleIsLiked = id => {
+    this.setState(prevState => ({
+      commentsList: prevState.commentsList.map(each => {
+        if (id === each.id) {
+          return {...each, isLiked: !each.isLiked}
+        }
+        return each
+      }),
+    }))
+  }
+
   onSubmitComment = event => {
     const {name, comment} = this.state
     event.preventDefault()
@@ -115,6 +126,7 @@ class Comments extends Component {
                 commentDetails={eachComment}
                 key={eachComment.id}
                 bgColors={initialContainerBackgroundClassNames}
+                toggleIsLiked={this.toggleIsLiked}
               />
             ))}
           </ul>
