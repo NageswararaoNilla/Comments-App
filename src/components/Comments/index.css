@@ -1,1 +1,134 @@
-/* Write your CSS here */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 25px;
+}
+
+.comments-banner-container {
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.heading {
+  color: #1e293b;
+  font-size: 42px;
+  font-family: 'Roboto';
+  font-weight: bold;
+}
+
+.input-img-container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .input-img-container {
+    flex-direction: row;
+  }
+}
+
+.comments-img {
+  width: 70%;
+}
+
+@media screen and (min-width: 768px) {
+  .comments-img {
+    width: 100%;
+    margin-right: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .img-container {
+    order: 1;
+    margin-left: auto;
+  }
+}
+
+.description {
+  color: #475569;
+  font-size: 18px;
+  font-family: 'Roboto';
+  font-weight: 500;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.user-name {
+  color: #1e293b;
+  font-size: 16px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #cbd2d9;
+  padding: 10px 16px;
+  border-radius: 5px;
+  width: 100%;
+  outline: none;
+}
+
+.input-comment {
+  color: #1e293b;
+  font-size: 18px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #cbd2d9;
+  padding: 8px 16px;
+  border-radius: 5px;
+  width: 100%;
+  outline: none;
+}
+
+.btn {
+  background-color: #0284c7;
+  color: #ffffff;
+  font-size: 12px;
+  font-family: 'Roboto';
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hr-line {
+  color: #cbd2d9;
+  background-color: #cbd2d9;
+  size: 1px;
+  width: 80%;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.comments-list-container {
+  /* align-self: flex-start; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* margin-left: 50px; */
+  width: 80%;
+}
+
+.comments-count {
+  align-self: flex-start;
+  font-family: 'Roboto';
+}
+
+.count {
+  color: #ffffff;
+  background-color: #0284c7;
+  padding: 3px 8px;
+  border-radius: 5px;
+  margin-right: 5px;
+  padding-bottom: 4px;
+}
